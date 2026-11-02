@@ -1,0 +1,141 @@
+.hero {
+  position: relative;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  z-index: -2;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(28, 22, 19, 0.7) 0%,
+      rgba(28, 22, 19, 0.48) 28%,
+      rgba(28, 22, 19, 0.15) 58%,
+      rgba(28, 22, 19, 0) 78%
+    );
+
+  z-index: -1;
+}
+
+.hero__content {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+  padding: 80px 24px;
+
+  color: #ffffff;
+}
+
+.hero__eyebrow {
+  margin: 0 0 16px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  max-width: 520px;
+  margin: 0;
+
+  font-size: clamp(2.5rem, 3.8vw, 3.75rem);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.hero__description {
+  max-width: 500px;
+  margin: 22px 0 0;
+
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  margin-top: 32px;
+}
+
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: 0 24px;
+
+  border: 1px solid transparent;
+
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.hero__button--primary {
+  background: #ffffff;
+  color: var(--color-text);
+}
+
+.hero__button--primary:hover {
+  background: var(--color-background);
+}
+
+.hero__button--secondary {
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+}
+
+.hero__button--secondary:hover {
+  background: #ffffff;
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 600px;
+  }
+
+  .hero__content {
+    padding: 64px 20px;
+  }
+
+  .hero__description {
+    font-size: 1rem;
+  }
+
+  .hero__actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

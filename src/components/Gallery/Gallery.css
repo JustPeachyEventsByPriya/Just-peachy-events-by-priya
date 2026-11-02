@@ -1,0 +1,160 @@
+.gallery {
+  padding: 112px 24px;
+  background: var(--color-surface);
+}
+
+.gallery__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery__header {
+  max-width: 720px;
+  margin-bottom: 56px;
+  gap: 48px;
+
+  margin-bottom: 56px;
+}
+
+.gallery__eyebrow {
+  margin: 0 0 14px;
+
+  color: var(--color-accent);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.gallery__title {
+  max-width: 650px;
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.gallery__intro {
+  max-width: 560px;
+  margin: 20px 0 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.gallery-card {
+  position: relative;
+  min-height: 420px;
+
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+/* Give the gallery an editorial rather than uniform-card layout. */
+.gallery-card:nth-child(1),
+.gallery-card:nth-child(4) {
+  grid-column: span 7;
+}
+
+.gallery-card:nth-child(2),
+.gallery-card:nth-child(3) {
+  grid-column: span 5;
+}
+
+.gallery-card:nth-child(5),
+.gallery-card:nth-child(6) {
+  grid-column: span 6;
+}
+
+.gallery-card__image {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  inset: 0;
+
+  object-fit: cover;
+
+  transition: transform 500ms ease;
+}
+
+.gallery-card:hover .gallery-card__image {
+  transform: scale(1.025);
+}
+
+.gallery-card__overlay {
+  position: absolute;
+  inset: auto 0 0;
+
+  padding: 64px 28px 28px;
+
+  color: #ffffff;
+
+  background: linear-gradient(
+    to top,
+    rgba(20, 16, 14, 0.72),
+    rgba(20, 16, 14, 0)
+  );
+}
+
+.gallery-card__category {
+  margin: 0 0 6px;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.gallery-card__title {
+  margin: 0;
+
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+@media (max-width: 800px) {
+  .gallery__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-card,
+  .gallery-card:nth-child(n) {
+    grid-column: span 1;
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 560px) {
+  .gallery {
+    padding: 80px 20px;
+  }
+
+  .gallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-card,
+  .gallery-card:nth-child(n) {
+    min-height: 420px;
+  }
+}
