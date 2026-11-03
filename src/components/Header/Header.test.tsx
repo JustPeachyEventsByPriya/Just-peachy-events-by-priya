@@ -1,46 +1,68 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
 import Header from './Header'
 
 describe('Header', () => {
-  it('renders the Just Peachy Events brand', () => {
+  it('renders the business branding and navigation', () => {
     render(<Header />)
 
     expect(
-      screen.getByText(/Just Peachy Events/i)
+      screen.getByText(/just peachy events/i),
     ).toBeInTheDocument()
 
     expect(
-      screen.getByText(/by Priya/i)
+      screen.getByText(/by priya/i),
     ).toBeInTheDocument()
+
+    expect(
+      screen.getByRole('link', { name: /services/i }),
+    ).toHaveAttribute('href', '#services')
   })
 
-  it('renders the main navigation', () => {
+  it('opens and closes the navigation menu', async () => {
+    const user = userEvent.setup()
+
     render(<Header />)
 
-    expect(
-      screen.getByRole('navigation', { name: /main navigation/i })
-    ).toBeInTheDocument()
+    const menuButton = screen.getByRole('button', {
+      name: /open navigation menu/i,
+    })
+
+    expect(menuButton).toHaveAttribute(
+      'aria-expanded',
+      'false',
+    )
+
+    await user.click(menuButton)
 
     expect(
-      screen.getByRole('link', { name: 'Home' })
-    ).toBeInTheDocument()
+      screen.getByRole('button', {
+        name: /close navigation menu/i,
+      }),
+    ).toHaveAttribute('aria-expanded', 'true')
+  })
+
+  it('closes the menu after selecting a navigation item', async () => {
+    const user = userEvent.setup()
+
+    render(<Header />)
+
+    await user.click(
+      screen.getByRole('button', {
+        name: /open navigation menu/i,
+      }),
+    )
+
+    await user.click(
+      screen.getByRole('link', { name: /services/i }),
+    )
 
     expect(
-      screen.getByRole('link', { name: 'Services' })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('link', { name: 'Gallery' })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('link', { name: 'About' })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('link', { name: 'Contact' })
-    ).toBeInTheDocument()
+      screen.getByRole('button', {
+        name: /open navigation menu/i,
+      }),
+    ).toHaveAttribute('aria-expanded', 'false')
   })
 })
