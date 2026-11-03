@@ -192,3 +192,132 @@
     width: 100%;
   }
 }
+
+.contact-social {
+  margin-top: 40px;
+}
+
+.contact-social__eyebrow {
+  margin: 0 0 16px;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-social__links {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-social__card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 16px 18px;
+
+  color: var(--color-text);
+  text-decoration: none;
+
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.contact-social__card:visited {
+  color: var(--color-text);
+}
+
+.contact-social__card:hover {
+  color: var(--color-text);
+  text-decoration: none;
+
+  border-color: #dcc9c0;
+  box-shadow: 0 8px 24px rgba(47, 41, 38, 0.07);
+  transform: translateY(-2px);
+}
+
+.contact-social__icon-wrapper {
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.contact-social__icon-wrapper--whatsapp {
+  color: #128c7e;
+  background: #edf8f5;
+}
+
+.contact-social__icon-wrapper--instagram {
+  color: #c13584;
+  background: #fbeff6;
+}
+
+.contact-social__icon {
+  width: 23px;
+  height: 23px;
+}
+
+.contact-social__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-social__content strong {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.contact-social__content small {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.contact-social__arrow {
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+
+  transition: transform 180ms ease;
+}
+
+.contact-social__card:hover .contact-social__arrow {
+  transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+  .contact-social {
+    margin-top: 32px;
+  }
+
+  .contact-social__card {
+    padding: 14px 16px;
+  }
+
+  .contact-social__icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact-social__icon {
+    width: 21px;
+    height: 21px;
+  }
+}
